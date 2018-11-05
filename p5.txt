@@ -72,21 +72,21 @@ realizar una llamada. Por eso, todo usuario registra su localización en
 un servidor Registrar. El Registrar guarda información sobre los
 usuarios en un servidor de localización que puede ser utilizado para
 localizar usuarios.
-* ¿Qué dirección IP tiene el servidor Registrar?
+* ¿Qué dirección IP tiene el servidor Registrar? 86.64.162.35
 * ¿A qué puerto (del servidor Registrar) se envı́an los paquetes
-SIP?
-* ¿Qué método SIP utiliza el UA para registrarse?
-* Además de REGISTER, ¿podrı́as decir qué instrucciones SIP entiende el UA?
+SIP? 5060
+* ¿Qué método SIP utiliza el UA para registrarse? REGISTER
+* Además de REGISTER, ¿podrı́as decir qué instrucciones SIP entiende el UA? SUBSCRIBE, INVITE, BYE
 [Al terminar el ejercicio es recomendable hacer commit de los ficheros modificados]
 
 9. Fijémonos en las tramas siguientes a la número 46:
-* ¿Se registra con éxito en el primer intento?
-* ¿Cómo sabemos si el registro se ha realizado correctamente o no?
+* ¿Se registra con éxito en el primer intento? No
+* ¿Cómo sabemos si el registro se ha realizado correctamente o no? Por la respuesta que nos envía en Registrar, en la primera ocasión es un 401 Unauthorized, en el que se realiza el registro un 200 OK
 * ¿Podrı́as identificar las diferencias entre el primer intento y el
 segundo de registro? (fı́jate en el tamaño de los paquetes y mira
-a qué se debe el cambio)
+a qué se debe el cambio) En el primer intento el tamaño del paquete es 523, en el segundo 712. El cambio es que el segundo lleva una respuesta a una petición de autenticación por parte del Registrar.
 * ¿Cuánto es el valor del tiempo de expiración de la sesión? Indica
-las unidades.
+las unidades. 3600 segundos.
 
 10. Una vez registrados, podemos efectuar una llamada. Vamos a probar
 con el servicio de eco de Ekiga que nos permite comprobar si nos

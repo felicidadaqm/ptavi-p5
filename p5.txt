@@ -28,24 +28,24 @@ en el repositorio.
 2. Observa que las tramas capturadas corresponden a una sesión SIP
 con Ekiga, un cliente de VoIP para GNOME. Responde a las siguientes
 cuestiones:
-* ¿Cuántos paquetes componen la captura?
-* ¿Cuánto tiempo dura la captura?
+* ¿Cuántos paquetes componen la captura? 954
+* ¿Cuánto tiempo dura la captura? 56,149 segundos
 * ¿Qué IP tiene la máquina donde se ha efectuado la captura? ¿Se
-trata de una IP pública o de una IP privada? ¿Por qué lo sabes?
+trata de una IP pública o de una IP privada? ¿Por qué lo sabes? FALTA
 
 3. Antes de analizar las tramas, mira las estadı́sticas generales que aparecen en el menú de Statistics. En el apartado de jerarquı́a de protocolos (Protocol Hierarchy) se puede ver el porcentaje del tráfico
 correspondiente al protocolo TCP y UDP.
 * ¿Cuál de los dos es mayor? ¿Tiene esto sentido si estamos hablando
-de una aplicación que transmite en tiempo real?
-* ¿Qué otros protocolos podemos ver en la jerarquı́a de protocolos?
-¿Cuales crees que son señal y cuales ruido?
+de una aplicación que transmite en tiempo real? El porcentaje de UDP (96,2) es mayor. Sí, UDP favorece puntualidad, las pérdidas se pueden tratar y ser imperceptibles.
+* ¿Qué otros protocolos podemos ver en la jerarquı́a de protocolos? Internet Control Message Protocol y Address Resolution Protocol.
+¿Cuales crees que son señal y cuales ruido? FALTA
 
 4. Observa por encima el flujo de tramas en el menú de Statistics en IO
 Graphs. La captura que estamos viendo incluye desde la inicialización
 (registro) de la aplicación hasta su finalización, con una llamada entremedias.
 * Filtra por sip para conocer cuándo se envı́an paquetes SIP. ¿En
-qué segundos tienen lugar esos envı́os?
-* Y los paquetes con RTP, ¿cuándo se envı́an?
+qué segundos tienen lugar esos envı́os? En los segundos 7, 14, 16, 38, 39 y 55.
+* Y los paquetes con RTP, ¿cuándo se envı́an? En los segundos 17, 18, 19, 20, 21, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37 y 38.
 [Al terminar el ejercicio es recomendable hacer commit de los ficheros modificados]
 
 5. Analiza las dos primeras tramas de la captura.

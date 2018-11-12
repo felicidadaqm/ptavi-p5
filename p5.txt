@@ -50,7 +50,8 @@ de una aplicación que transmite en tiempo real?
 
 * ¿Qué otros protocolos podemos ver en la jerarquı́a de protocolos? ¿Cuales crees que son señal y cuales ruido?
 	DNS, TCP, STUN, HTTP, SIP, RTP(H.261), ICMP, UDP y ARP.
-	RTP es señal ------- REVISAR BIEN
+	Todos aquellos que son necesarios en nuestra llamada, son señal: RTP, SIP.
+	El resto, ruido.
 
 4. Observa por encima el flujo de tramas en el menú de Statistics en IO
 Graphs. La captura que estamos viendo incluye desde la inicialización
@@ -91,28 +92,24 @@ que ha lanzado Ekiga?
 * ¿Qué devuelve el servidor? 
 	Le devuelve una IP: 83.36.48.212
 
-* Si lanzamos el navegador web, por ejemplo, Mozilla Firefox, y
-vamos a la misma URL, ¿qué recibimos? ¿Qué es, entonces, lo
-que está respondiendo el servidor? 
+* Si lanzamos el navegador web, por ejemplo, Mozilla Firefox, y vamos a la misma URL, ¿qué recibimos? ¿Qué es,
+entonces, lo que está respondiendo el servidor? 
 	Nos devuelve una IP, 212.128.254.134
 	Lo que nos responde el servidor es nuestra IP de Ekiga.
 
-
-7. Hasta la trama 45 se puede observar una secuencia de tramas del
-protocolo STUN.
+7. Hasta la trama 45 se puede observar una secuencia de tramas del protocolo STUN.
 * ¿Por qué se hace uso de este protocolo?
 	Es un protocolo cliente-servidor que permite a clientes NAT obtener su IP pública
 
 * ¿Podrı́as decir si estamos tras un NAT o no?
-	Sí. Lo sabemos porque aparecen tanto IPs públicas como privadas
-	Además, vemos el protocolo: classicstun, Simple Traversal of UDP through NAT
+	Sí. Lo sabemos porque aparecen tanto IPs públicas como privadas.
+	Además, vemos el protocolo: classicstun, Simple Traversal of UDP through NAT.
 
 
-8. La trama 46 es la primera trama SIP. En un entorno como el de Internet, lo habitual es desconocer la dirección IP de la otra parte al
-realizar una llamada. Por eso, todo usuario registra su localización en
-un servidor Registrar. El Registrar guarda información sobre los
-usuarios en un servidor de localización que puede ser utilizado para
-localizar usuarios.
+8. La trama 46 es la primera trama SIP. En un entorno como el de Internet, lo habitual es desconocer la dirección
+IP de la otra parte al realizar una llamada. Por eso, todo usuario registra su localización en un servidor 
+Registrar. El Registrar guarda información sobre los usuarios en un servidor de localización que puede ser 
+utilizado para localizar usuarios.
 
 * ¿Qué dirección IP tiene el servidor Registrar? 
 	86.64.162.35
@@ -159,7 +156,7 @@ dirección SIP?
 
 * ¿Qué es lo que contiene el cuerpo de la trama? ¿En qué formato/protocolo está? 
 	La descripción de la sesión que se va a llevar a cabo.
-	En formato SDP ---- REVISAR
+	En formato SDP.
 
 * ¿Tiene éxito el primer intento? ¿Cómo lo sabes? 
 	No. En el primer intento recibe como respuesta un 407 Proxy Authentication Required.
@@ -183,10 +180,10 @@ dirección SIP?
 * ¿Se utilizan bits de padding? 
 	Se reserva uno, aunque como las tramas no llevan relleno permanece a cero.
 
-* ¿Cuál es la periodicidad de los paquetes (en origen; nota que la
-captura es en destino)?
-	160 ms.
-	Del 40 al 79: 0,0013ms, del 80 al 159: 0,0008ms, del 160 al 319: 0,0118ms, swl 320 al 639: 0,0010ms, del 640 al 1279ms: 0,0021 ms--------- REVISAR
+* ¿Cuál es la periodicidad de los paquetes (en origen; nota que la captura es en destino)?
+	Aproximadamente 160 ms.
+	Del 40 al 79: 0,0013ms, del 80 al 159: 0,0008ms, del 160 al 319: 0,0118ms, swl 320 al 639: 0,0010ms, 
+	del 640 al 1279ms: 0,0021 ms.
 
 * ¿Cuántos bits/segundo se envı́an? 
 	64000 bits por segundo.
@@ -208,11 +205,11 @@ valor de delta?
 	En ambos aproximadamente 1290ms ó 1,29 segundos. 
 	Es el retraso máximo con el que llegan los paquetes.
 
-* ¿Cuáles son los valores de jitter (medio y máximo)? ¿Qué
-quiere decir eso? ¿Crees que estamos ante una conversación de
-calidad? 
+* ¿Cuáles son los valores de jitter (medio y máximo)? ¿Qué quiere decir eso? ¿Crees que estamos ante una
+ conversación de calidad? 
 	Audio: Medio: 42,5. Máximo: 119,653. 
-	Vídeo: Medio:153,240. Máximo: 183,096 -------- FALTAN COSAS
+	Vídeo: Medio:153,240. Máximo: 183,096.
+	No, mirando la gráfica podemos ver que los paquetes no llegan de forma uniforme.
 
 
 13. Elige un paquete RTP de audio. Analiza el flujo de audio en Telephony
@@ -234,7 +231,7 @@ dado. ¿Cuál?
 
 * ¿Es comparable el cambio en el valor de jitter con el del delta? ¿Cual es más grande?
 	Sí, la delta se refiere al retraso con el que ha llegado tal paquete, el jitter la diferencia desde que sale hasta que llega. 
-	En este caso es más grande la delta ------------ REVISAR
+	En este caso es más grande la delta.
 
 
 14. En Telephony selecciona el menú VoIP calls. Verás que se lista la
@@ -264,41 +261,73 @@ esa llamada y pulsa el botón Graph.
 
 16. Finalmente, se cierra la aplicación de VozIP.
 * ¿Por qué aparece una instrucción SIP del tipo REGISTER?
+	Porque se debe enviar un REGISTER con tiempo de expiración 0 para finalizar la llamada.
+
 * ¿En qué trama sucede esto?
+	950 y 952
+
 * ¿En qué se diferencia con la instrucción que se utilizó con anterioridad (al principio de la sesión)?
+	En el campo expires.
+
 [Al terminar el ejercicio es recomendable hacer commit de los ficheros modificados]
+
 
 Captura de una sesión SIP
 
-17. Dirı́gete a la web http://www.ekiga.net con el navegador y créate
-una cuenta. Lanza Ekiga, y configúralo con los datos de la cuenta
-que te acabas de crear. Comprueba que estás conectado (En la barra
-al final de la ventana podrás ver “Connected”). Al terminar, cierra
+17. Dirígete a la web de IPTel con el navegador y cr ́eate una cuenta SIP. Recibirás un correo electrónico de
+confirmación en la dirección que has indicado al registrarte.
+
+18. Lanza Ekiga, y configúralo con los datos de la cuenta que te acabas de crear.  Para ello, puedes ir al
+menú “Editar” y seleccionar “Cuentas”. Tendrás que rellenar los campos de manera similar a lo que se puede
+ver en la imagen a continuaci ́on (recuerda poner tu nombre de usuario en  lugar  de  “grex”). Comprueba  que
+estás  conectado  (En  la  barra al final de la ventana podr ́as ver “Connected”).  Al terminar,  cierra
 completamente Ekiga.
 
-18. Captura una sesión SIP de una conversación con el número SIP sip:500@ekigan.net.
-Recuerda que has de comenzar a capturar tramas antes de arrancar
-Ekiga para ver todo el proceso3 .
+19.  Captura una sesión SIP de una conversación con el número SIP sip:music@sip.iptel.org Recuerda que has de
+comenzar a capturar tramas antes de arrancar Ekiga para ver todo el proceso.
 
-19. Observa las diferencias en el inicio de la conversación entre el entorno
-del laboratorio y el del ejercicio anterior4 :
-* ¿Se utilizan DNS y STUN? ¿Por qué?
-* ¿Son diferentes el registro y la descripción de la sesión?
+20.  Observa las diferencias en el inicio de la conversación entre el entorno del laboratorio y el del ejercicio
+ anterior
 
-20. Identifica las diferencias existentes entre esta conversación y la conversación anterior:
-* ¿Cuántos flujos tenemos?
-* ¿Cuál es su periodicidad?
-* ¿Cuánto es el valor máximo del delta y los valores medios y
-máximo del jitter?
-* ¿Podrı́as reproducir la conversación desde Wireshark? ¿Cómo?
-Comprueba que poniendo un valor demasiado pequeño para el
-buffer de jitter, la conversación puede no tener la calidad necesaria.
-* ¿Sabrı́as decir qué tipo de servicio ofrece sip:500@ekiga.net?
+* ¿Se utilizan DNS y STUN? ¿Por qué?
+	Utiliza STUN y MDNS.
+	Para comprobar si nos encontramos o no detrás de un NAT.
+
+* ¿Son diferentes el registro y la descripción de la sesión?
+	Ambas siguen la misma estructura.
+	Aunque las descripciones no son exactamente iguales, los campos de creador y puerto por ejemplo son distintos.
+
+21.  Identifica  las  diferencias  existentes  entre  esta  conversación  y  la  conversación anterior:
+
+* ¿Cuántos flujos tenemos?
+	Tenemos dos flujos, de nuestro ordenador al destino de la llamada y viceversa.
+
+* ¿Cuál es su periodicidad?
+	Hay 108 paquetes por segundo.
+	49 paquetes pertenecen a la dirección nuestro ordenador -> destino llamada.
+	44 paquetes pertenecen a la dirección destino llamada -> nuestro ordenador.
+	El resto pertenecen a otros protocolos que en este caso no nos interesan.
+	Viendo la gráfica podemos comprobar que la calidad de la llamada es buena, los paquetes llegan en un
+	ritmo más o menos constante.
+
+* ¿Cuánto  es  el  valor  máximo  del  delta  y  los  valores  medios  y máximo del jitter?
+	Delta: Ida: 46,956. Vuelta: 39,971
+	Jitter medio: Ida: 0,506. Vuelta: 0,204
+	Jitter máximo: Ida: 3,377. Vuelta: 4,872
+
+* ¿Podrías reproducir la conversación desde Wireshark? ¿Cómo? Comprueba  que  poniendo  un  valor  demasiado
+pequeño  para  el buffer de jitter, la conversaci ́on puede no tener la calidad necesaria.
+	Sí. VoIP Calls -> Seleccionamos cual queremos reproducir -> Play Streams.
+	Aunque Wireshark no tiene el codec necesario para ello.
+
+* ¿Sabrías decir qué tipo de servicio ofrece sip:music@iptel.org?
+	Es un servicio de prueba de llamada, que reproduce música cuando se produce la conexión.
+
 [Al terminar el ejercicio es recomendable hacer commit de los ficheros modificados]
 
+22. Filtra por los paquetes SIP de la captura y guarda únicamente los paquetes SIP como p5.pcapng. Abre el
+ fichero guardado para cerciorarte de que lo has hecho bien. Deberás añadirlo al repositorio.
 
-21. Filtra por los paquetes SIP de la captura y guarda únicamente los
-paquetes SIP como p5.pcapng. Abre el fichero guardado para cerciorarte de que lo has hecho bien. Deberás añadirlo al repositorio.
 [Al terminar el ejercicio es recomendable hacer commit de los ficheros modificados]
-[Al terminar la práctica, realiza un push para sincronizar tu repositorio GitHub]
 
+[Al terminar la práctica, realiza un push para sincronizar tu repositorio GitHub]

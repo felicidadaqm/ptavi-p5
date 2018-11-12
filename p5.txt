@@ -279,7 +279,7 @@ confirmación en la dirección que has indicado al registrarte.
 
 18. Lanza Ekiga, y configúralo con los datos de la cuenta que te acabas de crear.  Para ello, puedes ir al
 menú “Editar” y seleccionar “Cuentas”. Tendrás que rellenar los campos de manera similar a lo que se puede
-ver en la imagen a continuaci ́on (recuerda poner tu nombre de usuario en  lugar  de  “grex”). Comprueba  que
+ver en la imagen a continuación (recuerda poner tu nombre de usuario en  lugar  de  “grex”). Comprueba  que
 estás  conectado  (En  la  barra al final de la ventana podr ́as ver “Connected”).  Al terminar,  cierra
 completamente Ekiga.
 

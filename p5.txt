@@ -242,7 +242,7 @@ esa llamada y pulsa el botón Graph.
 
 * ¿Cuáles son sus SSRC? ¿Por qué hay varios SSRCs? ¿Hay CSRCs?
 	SSRC: 0xbf4afd37
-	CSRC: 0
+	CSRC: No hay.
 	Hay dos SSRC, uno correspondiente a audio y otro video. Hay varios porque debe identificar la fuente que emite cada uno de los flujos.
 
 
@@ -295,7 +295,8 @@ comenzar a capturar tramas antes de arrancar Ekiga para ver todo el proceso.
 
 * ¿Son diferentes el registro y la descripción de la sesión?
 	Ambas siguen la misma estructura.
-	Aunque las descripciones no son exactamente iguales, los campos de creador y puerto por ejemplo son distintos.
+	Aunque las descripciones no son exactamente iguales, en este último caso solo tenemos audio.
+	Otros campos de descripción también son distintos, algo normal, son dos sesiones diferentes.
 
 21.  Identifica  las  diferencias  existentes  entre  esta  conversación  y  la  conversación anterior:
 
